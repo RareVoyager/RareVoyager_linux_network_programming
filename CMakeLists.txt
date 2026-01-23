@@ -15,3 +15,7 @@ add_executable(tcp_client tcp_client.cc ${COMMON_SOURCES})
 add_executable(test_service tcp_service.cc ${COMMON_SOURCES})
 
 add_executable(tcp_service_thread tcp_service_thread.cc ${COMMON_SOURCES})
+
+add_executable(select_service select_service.cc ${COMMON_SOURCES})
+
+add_executable(test_array_service test_array_service.cc ${COMMON_SOURCES})
