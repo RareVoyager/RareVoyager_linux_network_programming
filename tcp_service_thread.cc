@@ -67,12 +67,13 @@ int main()
 
     int lfd = Wrap::Socket(AF_INET, SOCK_STREAM, 0);
 
+    std::cout << NULL << std::endl;
     sockaddr_in sevr_addr{};
     sevr_addr.sin_family = AF_INET;
     sevr_addr.sin_port = htons(SEVR_PORT);
     sevr_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    // （可选但推荐）端口复用，避免 TIME_WAIT 导致 bind 失败
+    // 端口复用，避免 TIME_WAIT 导致 bind 失败
     int opt = 1;
     setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 

@@ -85,7 +85,7 @@ int Wrap::Socket(int family, int type, int protocol)
 int Wrap::Close(int fd)
 {
     int ret = close(fd);
-    if (fd == -1)
+    if (ret == -1)
     {
         Wrap::Die("close");
     }
@@ -244,4 +244,54 @@ ssize_t Wrap::ReadLine(int fd, void *vptr, size_t maxlen)
 
     *ptr = '\0';
     return static_cast<ssize_t>(n);
+}
+
+void FdArray::addFd(int fd)
+{
+    fds_.push_back(fd);
+    if (fd > maxfd_)
+    {
+        maxfd_ = fd;
+    }
+}
+
+void FdArray::removeFd(int fd)
+{
+    for (auto it = fds_.begin(); it != fds_.end(); ++it)
+    {
+        if (*it == fd)
+        {
+            fds_.erase(it);
+            break;
+        }
+    }
+    // 重新计算 maxfd（fd 数量小，代价可接受）
+    if (fd == maxfd_)
+    {
+        maxfd_ = -1;
+        for (int f : fds_)
+        {
+            if (f > maxfd_)
+                maxfd_ = f;
+        }
+    }
+}
+
+int FdArray::maxFd() const
+{
+    return maxfd_;
+}
+
+void FdArray::setFdSet()
+{
+    FD_ZERO(&fdset_);
+    for (int fd : fds_)
+    {
+        FD_SET(fd, &fdset_);
+    }
+}
+
+fd_set FdArray::getFdSet() const
+{
+    return fdset_;
 }
