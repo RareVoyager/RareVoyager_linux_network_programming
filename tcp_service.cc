@@ -8,17 +8,9 @@
 #include "wrap.h"
 
 #define SEVR_PORT 9527
-bool isError(int ret, const std::string &msg)
-{
-    if (ret == -1)
-    {
-        std::cerr << msg << " error" << std::endl;
-        return false;
-    }
-    std::cout << "create " << msg << " success" << std::endl;
-    return true;
-}
 
+// 多进程版本
+// todo: 添加多线程版本。考虑线程安全问题
 void catch_child()
 {
     while (waitpid(0, nullptr, WNOHANG) > 0)

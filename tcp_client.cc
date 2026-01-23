@@ -6,6 +6,7 @@
 #include <cstring>
 #include "wrap.h"
 
+
 #define SEVR_PORT 9527
 int main()
 {
@@ -15,6 +16,7 @@ int main()
     struct sockaddr_in clit_addr{};
     clit_addr.sin_family = AF_INET;
     clit_addr.sin_port = htons(SEVR_PORT);
+    std::cout << htons(SEVR_PORT) << std::endl;
 
     ret = inet_pton(AF_INET, "127.0.0.1", &clit_addr.sin_addr.s_addr);
     if (ret != 1)

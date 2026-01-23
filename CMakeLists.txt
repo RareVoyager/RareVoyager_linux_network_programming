@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(servece LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 1. 定义公共源文件变量 (修正了拼写，建议用复数命名习惯)
@@ -13,3 +13,5 @@ set(COMMON_SOURCES "wrap.cc")
 add_executable(tcp_client tcp_client.cc ${COMMON_SOURCES})
 
 add_executable(test_service tcp_service.cc ${COMMON_SOURCES})
+
+add_executable(tcp_service_thread tcp_service_thread.cc ${COMMON_SOURCES})
