@@ -93,7 +93,7 @@ int main()
             int n = ::read(i, buf, sizeof(buf));
             if (n == 0)
             {
-                // 正常关闭
+                // 对端关闭
                 Wrap::Close(i);
                 FD_CLR(i, &allsets);
             }
