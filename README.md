@@ -27,3 +27,5 @@ make
 **tcp_service.cc** 文件是多进程版本源文件
 **tcp_service_thread.cc** 是多线程版本
 **select_service.cc** 文件是多路IO转接版本
+
+`select` 优势是跨平台。缺点也很明显,最大承接1024个连接, 无法达到高并发。
