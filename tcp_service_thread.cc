@@ -67,7 +67,6 @@ int main()
 
     int lfd = Wrap::Socket(AF_INET, SOCK_STREAM, 0);
 
-    std::cout << NULL << std::endl;
     sockaddr_in sevr_addr{};
     sevr_addr.sin_family = AF_INET;
     sevr_addr.sin_port = htons(SEVR_PORT);
