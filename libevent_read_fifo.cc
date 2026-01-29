@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "wrap.h"
-#include <event2/event_struct.h>
 
 void read_cb(evutil_socket_t fd, short what, void *arg)
 {

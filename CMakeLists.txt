@@ -33,3 +33,8 @@ target_link_libraries(read_fifo_event PRIVATE event)
 add_executable(write_fifo_event libevent_write_fifo.cc ${COMMON_SOURCES})
 target_link_libraries(write_fifo_event PRIVATE event)
 
+add_executable(event_service event_service.cc ${COMMON_SOURCES})
+target_link_libraries(event_service PRIVATE event)
+
+add_executable(event_client event_client.cc ${COMMON_SOURCES})
+target_link_libraries(event_client PRIVATE event)
