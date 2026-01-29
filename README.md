@@ -8,10 +8,41 @@ cmake 3.22.1
 
 ## 如何构建这个项目？
 
+
+
 首先clone 项目
+需要先下载三方库 libevent。这里使用的是libevent-2.1.8-stable
+具体执行如下
+```sh
+# 先拉取代码
+git clone https://github.com/libevent/libevent.git
+
+# 进入到目录
+cd libevent
+
+# 切换分支
+git checkout release-2.1.8-stable
+
+# 验证一下
+git branch
+
+---------------------或者一步到位--------------------
+git clone -b release-2.1.8-stable https://github.com/libevent/libevent.git
+
+```
+
+下载完成之后, 安装到usr/local/include目录下
+```sh
+./autogen.sh
+./configure
+make -j4
+sudo make install
+```
 然后创建一个build 目录
 然后执行cmake命令 构建可执行程序。具体指令如下
+
 ``` sh
+
 mkdir build && cd build
 cmake ..
 make
@@ -29,3 +60,6 @@ make
 **select_service.cc** 文件是多路IO转接版本
 
 `select` 优势是跨平台。缺点也很明显,最大承接1024个连接, 无法达到高并发。
+`poll` 没有解决select 的缺点
+`epoll` 解决了select 的缺点
+
