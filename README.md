@@ -9,7 +9,6 @@ cmake 3.22.1
 ## 如何构建这个项目？
 
 
-
 首先clone 项目
 需要先下载三方库 libevent。这里使用的是libevent-2.1.8-stable
 具体执行如下
@@ -26,7 +25,7 @@ git checkout release-2.1.8-stable
 # 验证一下
 git branch
 
----------------------或者一步到位--------------------
+---------------------也可以一步到位--------------------
 git clone -b release-2.1.8-stable https://github.com/libevent/libevent.git
 
 ```
@@ -62,4 +61,10 @@ make
 `select` 优势是跨平台。缺点也很明显,最大承接1024个连接, 无法达到高并发。
 `poll` 没有解决select 的缺点
 `epoll` 解决了select 的缺点
+`libevent` 高性能的三方库
+
+最后的web服务器我也只搭建了一个基础的框架,相关代码在web_service中。原因是相关知识已经基本学过, 这里更像是跟着复习顺便学习Html知识。
+
+具体的基础知识可以看博客内容
+[回声之境](https://www.rarevoyager.top/)
 
