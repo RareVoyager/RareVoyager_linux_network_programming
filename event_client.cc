@@ -101,6 +101,7 @@ int main()
     // 4. 设置回调函数
     bufferevent_setcb(bufevent, read_cb, write_cb, event_cb, base);
 
+    // 启用读写
     bufferevent_enable(bufevent, EV_READ);
 
     // 监听标准输入输出
@@ -109,6 +110,7 @@ int main()
     // 5. 开启事件循环
     event_base_dispatch(base);
 
+    // 6. 函数结束前销毁
     bufferevent_free(bufevent);
 
     event_base_free(base);
